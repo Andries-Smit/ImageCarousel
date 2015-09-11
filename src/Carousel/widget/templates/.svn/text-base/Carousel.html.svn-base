@@ -1,0 +1,10 @@
+<div>
+  <div class="carousel2" style="overflow: hidden; height: ${height}px; width: ${width}px;">
+    <div dojoAttachPoint="mouseOverNode">
+      <div dojoAttachPoint="slidesNode" style="position: relative; overflow: hidden;" class="carousel2_slidesnode">
+      </div>
+    </div>
+  </div>
+  <div dojoAttachPoint="leftNode"  class="carousel2_left" ></div>
+  <div dojoAttachPoint="rightNode" class="carousel2_right"></div>
+</div>

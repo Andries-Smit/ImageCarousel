@@ -1,0 +1,68 @@
+.Carousel .hidden {
+	display: none;
+}
+
+.Carousel div.slideshow {
+	position: relative;
+	overflow: hidden;
+
+	padding: 0;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+.Carousel div.slideshow ul li {
+	position: absolute;
+    top: 0;
+   	left: 0;
+	background-color: transparent;
+}
+
+
+.Carousel div.jumpers { 
+	position: absolute;
+}
+
+.Carousel div.indicator {
+	float: left;
+	height: 10px;
+	width: 10px;
+	
+	margin: 0.5em;
+
+	border: 2px solid;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.Carousel div.indicator:hover, 
+.Carousel div.fwd:hover,
+.Carousel div.back:hover {
+	cursor: pointer;
+}
+
+.Carousel div.fwd,
+.Carousel div.back {
+	height: 50px;
+	width: 35px;
+
+	position: absolute;
+	top: 45%;
+}
+
+.Carousel div.back {
+	left: 5px;
+}
+
+.Carousel div.fwd {
+	right: 5px;
+}
+
+

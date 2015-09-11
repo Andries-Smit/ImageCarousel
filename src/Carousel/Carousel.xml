@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="Carousel.widget.Carousel" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+  <name>Carousel</name>
+  <description>Displays an image carousel based on URLS stored in the domain model.</description>
+
+  <icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2Fy
+ZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAfxJREFUeNqkk89LFGEcxp935t3WZmfD
+XWTZRDTYgoTWS3aI6OgxKMRL+w9067A3uxTUOQqCDt50L160qGtdxBAhDx0ETaTW
+UduBmaJ1Z8aZebf3++4Uq7goNPDy/ph5Ps/3eb8Ma7fb+J+HP56fB0EYY3/nO/L8
+4hn1e7x7R5AwDAefVSqvT6uLyfGoVnvQDVDOEnJ7dWsL1lr1BJWUySr78AsTkx9w
+GASM93IeLy32dH73ZgqREPATwBHnFx8ZuAbockQCyPYBKbkezgMD5nncv1kE56kO
+wPMYP+48W+qd+f3aphIeRucQdgAapxyxzPVlodBD1kGX7zVkJbEC7O9aam5RBZSD
+NppmIp0W6p6UVGfQUzpELCBkFvomjn3lbFk+ImnqtVpMoxz08uWrIXxaKcAwDGQy
+GeSKRQxdv4FC6TJMM6sA604HdHXiKXTO4TqOzikHUTfWt2H/6JeHBoZHdFy7NYKB
+bBmB15Ci38q5eRAp5+czM28fTk8vxc2mzVtJBdWqK8v/KaNoqq329ldkLyzBrkdw
+rADlcYEr/Z5yjnz/s728XJNJXU45iLqzI5KLixXAcEKwTIT9bwKN7zFGjzrvpXO5
+3cB1wSkHUe8+sU9s36VkPu78r0/5sbGKbpqDZ/lzyPmgXp8j5+5Gp+XIJ+vTHlJ6
+3Qd/BBgAioQXVN0jZskAAAAASUVORK5CYII=</icon>
+
+  <properties>
+    <property key="entity" type="entity">
+      <caption>Entity</caption>
+      <category>Data source</category>
+      <description>The entity which should be displayed in the carousel</description>
+    </property>
+	<property key="entityConstraint" type="entityConstraint" entityProperty="entity" required="false">
+			<caption>Constraint</caption>
+			<category>Data source</category>
+			<description>Constraint on the carousel entity.</description>
+	</property>		
+    <property key="captionattr" type="attribute" entityProperty="entity">
+      <caption>Caption attribute</caption>
+      <category>Data source</category>
+      <description>This fields provides the caption of a carousel item</description> 
+      <attributeTypes>
+        <attributeType name="String"/> 
+      </attributeTypes>
+    </property>
+    <property key="imageattr" type="attribute" entityProperty="entity" required="false">
+      <caption>Image URL attribute</caption>
+      <category>Data source</category>
+      <description>This field provides the url of the image to be used.</description>
+      <attributeTypes>
+				<attributeType name="AutoNumber"/>
+				<attributeType name="Boolean"/>
+				<attributeType name="Currency"/>
+				<attributeType name="DateTime"/>
+				<attributeType name="Enum"/>
+				<attributeType name="Float"/>
+				<attributeType name="Integer"/>
+				<attributeType name="Long"/>
+				<attributeType name="String"/> 
+      </attributeTypes>			
+    </property>
+    <property key="sortattr" type="attribute" entityProperty="entity">
+      <caption>Sort attribute</caption>
+      <category>Data source</category>
+      <description>This field is used to sort the images in the carousel, using ascending order</description>
+      <attributeTypes>
+				<attributeType name="AutoNumber"/>
+				<attributeType name="Boolean"/>
+				<attributeType name="Currency"/>
+				<attributeType name="DateTime"/>
+				<attributeType name="Enum"/>
+				<attributeType name="Float"/>
+				<attributeType name="Integer"/>
+				<attributeType name="Long"/>
+				<attributeType name="String"/> 
+      </attributeTypes>
+    </property>
+<!--     <property key="imagepath" type="string" defaultValue="" required="false">
+      <caption>Base path of the images</caption>
+      <category>Data source</category>
+      <description>URL (as seen by the browser) pointing towards the images directory. To retreive Mendix File Documetns, based on id, use basepath
+file?thumb=true&amp;target=internal&amp;guid=			
+			</description>
+    </property> -->
+    <property key="useNavigation" type="boolean" defaultValue="true">
+      <caption>Use image navigation</caption>
+      <category>Behavior</category>
+      <description>Use the image navigation. If the delay is set to 0, the navigation will still show up.</description>
+    </property>
+    <property key="useBullets" type="boolean" defaultValue="true">
+      <caption>Use Bullets</caption>
+      <category>Behavior</category>
+      <description>Use the bullets. (Not recommended for more than 6 images)</description>
+    </property>
+    <property key="jumpLocation" type="enumeration" defaultValue="topright">
+      <caption>Location of the Bullets</caption>
+      <category>Behavior</category>
+      <description>The location of the bullets</description>
+      <enumerationValues>
+        <enumerationValue key="topleft">Top left</enumerationValue>
+        <enumerationValue key="topright">Top right</enumerationValue>
+        <enumerationValue key="bottomleft">Bottom left</enumerationValue>
+        <enumerationValue key="bottomright">Bottom right</enumerationValue>
+      </enumerationValues>
+    </property>
+    <property key="delay" type="integer" defaultValue="2000">
+    	<caption>Delay</caption>
+    	<category>Behavior</category>
+    	<description>Delay until the carousel moves to the next image (in ms).</description>
+    </property>
+    <property key="duration" type="integer" defaultValue="1000">
+      <caption>Duration</caption>
+      <category>Behavior</category>
+      <description>Duration of the transition effect (in ms)</description>
+    </property>
+    <property key="imageClick" type="microflow" required="false" entityProperty="entity">
+      <caption>Click Action</caption>
+      <category>Behavior</category>
+      <description>Microflow to be triggered when an image is clicked.</description>
+      <returnType type="Void"/>
+    </property>
+    <property key="width" type="integer" defaultValue="800">
+      <caption>Width</caption>
+      <category>Appearance</category>
+      <description>Width of the carousel in pixels.</description>
+    </property>
+    <property key="height" type="integer" defaultValue="600">
+    	<caption>Height</caption>
+    	<category>Appearance</category>
+    	<description>Height of the carousel in pixels.</description>
+    </property>
+    <property key="border" type="integer" defaultValue="1">
+      <caption>Border width</caption>
+      <category>Appearance</category>
+      <description>Width of the border around the carousel.</description>
+    </property>
+    <property key="borderStyle" type="enumeration" defaultValue="solid">
+      <caption>Border style</caption>
+      <category>Appearance</category>
+      <description>Style of the border around the carousel.</description>
+      <enumerationValues>
+        <enumerationValue key="solid">Solid</enumerationValue>
+        <enumerationValue key="dotted">Dotted</enumerationValue>
+        <enumerationValue key="dashed">Dashed</enumerationValue>
+        <enumerationValue key="double">Double</enumerationValue>
+        <enumerationValue key="groove">Groove</enumerationValue>
+        <enumerationValue key="ridge">Ridge</enumerationValue>
+        <enumerationValue key="inset">Inset</enumerationValue>
+        <enumerationValue key="outset">Outset</enumerationValue>
+      </enumerationValues>
+    </property>
+    <property key="borderColor" type="string" defaultValue="#000">
+      <caption>Border Color</caption>
+      <category>Appearance</category>
+      <description>The color of the  border around the carousel.</description>
+    </property>
+    <property key="jumperColor" type="string" defaultValue="#fff" required="false">
+      <caption>Navigation Color</caption>
+      <category>Appearance</category>
+      <description>The color of the image navigation</description>
+    </property>
+    <property key="arrowBack" type="string" required="false">
+      <caption>Arrow Image URL Back</caption>
+      <category>Appearance</category>
+      <description>The url for the arrowimage to use for navigating back.</description>
+    </property>
+    <property key="arrowFwd" type="string" required="false">
+      <caption>Arrow Image URL Fwd</caption>
+      <category>Appearance</category>
+      <description>The url for the arrowimage to use for navigating forward.</description>
+    </property>
+  </properties>
+</widget>
+
